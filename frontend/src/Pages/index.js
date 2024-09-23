@@ -13,6 +13,9 @@ import PostJobPage from "./PostJobPage/PostJobPage.jsx";
 import JobsPosted from "./JobsPosted/JobsPosted.jsx";
 import BlogPage from "./BlogPage/BlogPage.jsx";
 import FreeCoursesPage from "./FreeCoursesPage/FreeCoursesPage.jsx";
+import FreelancerEarningPage from "./FreelancerEarningPage/FreelancerEarningPage.jsx";
+import PrivacyPolicyPage from "./PrivacyPolicyPage/PrivacyPolicyPage.jsx";
+import TermsOfServicesPage from "./TermsOfServicesPage/TermsOfServicesPage.jsx";
 
 
 export {
@@ -31,4 +34,7 @@ export {
     JobsPosted,
     BlogPage,
     FreeCoursesPage,
+    FreelancerEarningPage,
+    PrivacyPolicyPage,
+    TermsOfServicesPage,
 }

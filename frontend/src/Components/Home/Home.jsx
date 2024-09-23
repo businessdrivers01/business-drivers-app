@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import MyButton from '../MyButton/MyButton';
 import { motion } from 'framer-motion';
 import { OurHistory, TrustedFamily, OurMission, Benefits } from '../';
-
+import { FreelancerEarningPage } from "../../Pages"
 // Placeholder image URL from Pexels
 const placeholderImage = 'https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=800';
 
@@ -46,6 +46,7 @@ function Home() {
       <TrustedFamily />
       <OurHistory />
       <OurMission />
+      <FreelancerEarningPage />
       <Benefits />
 
     </main>
