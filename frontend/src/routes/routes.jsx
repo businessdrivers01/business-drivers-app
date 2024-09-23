@@ -1,6 +1,6 @@
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from "react-router-dom"
 import { Layout, Home, ContactUs } from '../Components'
-import { LoginPage, SignupPage, FreelancerDashboard, JobsPage, FreelancerDashboardDefault, NotFound, ErrorBoundary, CompanyDashboard, FreelancerProfilePage, CompanyProfilePage, CompanyDashboardDefault, PostJobPage, JobsPosted, BlogPage } from '../Pages'
+import { LoginPage, SignupPage, FreelancerDashboard, JobsPage, FreelancerDashboardDefault, NotFound, ErrorBoundary, CompanyDashboard, FreelancerProfilePage, CompanyProfilePage, CompanyDashboardDefault, PostJobPage, JobsPosted, BlogPage, FreeCoursesPage } from '../Pages'
 import { ProtectedRoute } from '../Components'
 
 
@@ -21,6 +21,7 @@ export const router = createBrowserRouter(
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<SignupPage />} />
                 <Route path="/blogs" element={<BlogPage />} />
+                <Route path="/free-courses" element={<FreeCoursesPage />} />
                 <Route path="/contact-us" element={<ContactUs />} />
                 <Route path="/*" element={<NotFound />} />
             </Route>

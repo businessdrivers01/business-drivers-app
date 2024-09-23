@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm, ValidationError } from '@formspree/react';
 import tickImg from '../../assets/icons/tick.png';
 import { MyButton } from '../../Components';
-
+import { motion } from 'framer-motion';
 function ContactUs() {
     const [state, handleSubmit] = useForm("xzzpgnbo");
     const [submitting, setSubmitting] = useState(false);
@@ -21,7 +21,11 @@ function ContactUs() {
     };
 
     return (
-        <section className="bg-white">
+        <motion.section 
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        className="bg-white">
             <div className="py-12 lg:py-20 px-4 mx-auto max-w-screen-md">
                 <h2 className="mb-6 text-4xl lg:text-5xl tracking-tight font-extrabold text-center text-darkBlue">
                     Contact <span className='text-orange'>Us</span>
@@ -121,7 +125,7 @@ function ContactUs() {
                     </>
                 )}
             </div>
-        </section>
+        </motion.section>
     );
 }
 

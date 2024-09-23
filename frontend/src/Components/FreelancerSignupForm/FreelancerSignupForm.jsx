@@ -22,8 +22,8 @@ function FreelancerSignupForm() {
         currentlyDoingJob: '',
         companyName: '',
         agree: false,
-        avatar: null, // New field for Avatar
-        bio: '', // New field for Bio
+        avatar: null,
+        bio: '', 
     });
 
     const handleChange = (e) => {

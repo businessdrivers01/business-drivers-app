@@ -25,7 +25,7 @@ function Home() {
           </p>
           <NavLink to="/signup">
             <MyButton
-              className='hover:text-orange py-4 text-xl md:text-2xl'
+              className='hover:text-orange text-xl md:text-[1.3rem]'
               children='Get Started' />
           </NavLink>
         </div>

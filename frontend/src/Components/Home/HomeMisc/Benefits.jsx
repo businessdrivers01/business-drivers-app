@@ -23,7 +23,7 @@ function Benefits() {
             <h2 className="text-darkBlue text-3xl md:text-4xl font-bold text-center md:text-left">
               {section.heading}
             </h2>
-            <p className="text-gray-600 text-center md:text-left mt-4">
+            <p className="text-lightBlue text-center md:text-[1.3rem] md:text-left mt-4">
               {section.paragraph}
             </p>
           </div>

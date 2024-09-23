@@ -9,10 +9,11 @@ function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
 
     const navbarItems = [
-        { id: 1, title: "Home", route: "/" },
-        { id: 2, title: "Free Courses", route: "/free-courses" },
-        { id: 3, title: "Blogs", route: "/blogs" },
-        { id: 4, title: "Contact Us", route: "/contact-us" },
+        { id: 1, title: "Find Work", route: "/signup" },
+        { id: 2, title: "Find Talent", route: "/signup" },
+        { id: 3, title: "Free Courses", route: "/free-courses" },
+        { id: 4, title: "Blogs", route: "/blogs" },
+        { id: 5, title: "Contact Us", route: "/contact-us" },
     ];
 
     const toggleMenu = () => setMenuOpen(prev => !prev);
@@ -20,7 +21,7 @@ function Navbar() {
     return (
         <nav className='flex justify-between bg-darkBlue text-white py-6 px-4 items-center md:py-2 md:px-8'>
             {/* Logo */}
-            <div className="logo w-[18vw] md:w-[6vw]">
+            <div className="logo w-[18vw] md:w-[10vw] scale-150">
                 <NavLink to="/">
                     <img className='w-full' src={mainLogo} alt="Main Logo" />
                 </NavLink>

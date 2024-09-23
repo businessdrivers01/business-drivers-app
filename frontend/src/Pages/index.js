@@ -12,6 +12,7 @@ import CompanyProfilePage from "./CompanyProfilePage/CompanyProfilePage.jsx";
 import PostJobPage from "./PostJobPage/PostJobPage.jsx";
 import JobsPosted from "./JobsPosted/JobsPosted.jsx";
 import BlogPage from "./BlogPage/BlogPage.jsx";
+import FreeCoursesPage from "./FreeCoursesPage/FreeCoursesPage.jsx";
 
 
 export {
@@ -28,5 +29,6 @@ export {
     CompanyProfilePage,
     PostJobPage,
     JobsPosted,
-    BlogPage
+    BlogPage,
+    FreeCoursesPage,
 }
