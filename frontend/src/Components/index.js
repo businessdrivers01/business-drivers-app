@@ -21,6 +21,7 @@ import LoadingComponent from "./LoadingComponent/LoadingComponent.jsx";
 import Blog from "./Blog/Blog.jsx";
 import ContactUs from "./ContactUs/ContactUs.jsx";
 import FreeCourse from "./FreeCourse/FreeCourse.jsx";
+import FreelancerEarning from "./FreelancerEarning/FreelancerEarning.jsx";
 
 
 
@@ -48,5 +49,6 @@ export {
     Blog,
     ContactUs,
     FreeCourse,
+    FreelancerEarning
 }
 
