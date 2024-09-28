@@ -3,7 +3,7 @@ export const getCurrentCompany = () => {
     
     // If no company is found in localStorage, return null
     if (!companyString) {
-        console.log('No company found in localStorage');
+        // console.log('No company found in localStorage');
         return null;
     }
 

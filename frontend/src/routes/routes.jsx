@@ -1,7 +1,7 @@
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from "react-router-dom"
 import { Layout, Home, ContactUs } from '../Components'
 import { LoginPage, SignupPage, FreelancerDashboard, JobsPage, FreelancerDashboardDefault, NotFound, ErrorBoundary, CompanyDashboard, FreelancerProfilePage, CompanyProfilePage, CompanyDashboardDefault, PostJobPage, JobsPosted, BlogPage, FreeCoursesPage, PrivacyPolicyPage, TermsOfServicesPage } from '../Pages'
-import { ProtectedRoute } from '../Components'
+import { CompanyProtectedRoute, FreelancerProtectedRoute } from '../Components'
 
 
 
@@ -20,6 +20,9 @@ export const router = createBrowserRouter(
                 <Route index element={<Home />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<SignupPage />} />
+                {/* just to Add NavLink isActive state separately on Find Work and Find Job NavItems */}
+                <Route path="/signup-freelancer" element={<SignupPage />} />
+
                 <Route path="/blogs" element={<BlogPage />} />
                 <Route path="/free-courses" element={<FreeCoursesPage />} />
                 <Route path="/contact-us" element={<ContactUs />} />
@@ -31,34 +34,31 @@ export const router = createBrowserRouter(
             {/* Protected Routes for Freelancer */}
             <Route path="/freelancer-dashboard" element={
                 <ErrorBoundary>
-                    <ProtectedRoute>
+                    <FreelancerProtectedRoute>
                         <FreelancerDashboard />
-                    </ProtectedRoute>
+                    </FreelancerProtectedRoute>
                 </ErrorBoundary>
             } errorElement={<ErrorBoundary />}>
-                {/* Nested Routes under FreelancerDashboard */}
+                <Route index element={<FreelancerDashboardDefault />} />
                 <Route path="/freelancer-dashboard/profile" element={<FreelancerProfilePage />} />
                 <Route path="/freelancer-dashboard/jobs" element={<JobsPage />} />
-                <Route path="" element={<FreelancerDashboardDefault />} /> {/* Default dashboard content */}
+
             </Route>
 
             {/* Protected Routes for Company */}
             <Route path="/company-dashboard" element={
                 <ErrorBoundary>
-                    <ProtectedRoute>
+                    <CompanyProtectedRoute>
                         <CompanyDashboard />
-                    </ProtectedRoute>
+                    </CompanyProtectedRoute>
                 </ErrorBoundary>
-            } errorElement={<ErrorBoundary />}>
-
-                {/* Nested Routes under CompanyDashboard */}
-                <Route path="" element={<CompanyDashboardDefault />} />
+            }>
+                <Route index element={<CompanyDashboardDefault />} />
                 <Route path="/company-dashboard/profile" element={<CompanyProfilePage />} />
                 <Route path="/company-dashboard/post-job" element={<PostJobPage />} />
-                <Route path="/company-dashboard/jobs-posted" element={<JobsPosted />} /> Default dashboard content
+                <Route path="/company-dashboard/jobs-posted" element={<JobsPosted />} />
 
             </Route>
-
 
 
 

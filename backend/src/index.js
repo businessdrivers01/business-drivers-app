@@ -11,7 +11,7 @@ configDotenv();
 
 const app = express();
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://192.168.1.107:5173',
+    origin: ['http://localhost:5173', 'http://192.168.1.108:5173', 'http://192.168.1.107:5173',
         'https://www.businessdrivers01.com', "https://businessdrivers01.com"],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
@@ -21,7 +21,7 @@ app.use(cors({
 const DBFunc = async () => console.log("To Avoid Over Limit Of Atlas")
 // DBFunc()
 connectDB().then(() => {
-    app.listen(process.env.PORT, '192.168.1.107', () => {
+    app.listen(process.env.PORT, '192.168.1.108', () => {
         console.log(`Server Chal Pya J, http://localhost:${process.env.PORT} Tay`);
 
     })

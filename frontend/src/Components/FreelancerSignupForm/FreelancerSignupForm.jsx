@@ -6,7 +6,8 @@ import { motion } from 'framer-motion';
 import axios from 'axios';
 
 function FreelancerSignupForm() {
-
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [errorMessage, setErrorMessage] = useState(null);
 
     const navigate = useNavigate()
 
@@ -23,7 +24,7 @@ function FreelancerSignupForm() {
         companyName: '',
         agree: false,
         avatar: null,
-        bio: '', 
+        bio: '',
     });
 
     const handleChange = (e) => {
@@ -52,6 +53,8 @@ function FreelancerSignupForm() {
         formDataToSend.append('avatar', formData.avatar); // Append avatar file
         formDataToSend.append('bio', formData.bio); // Append bio
 
+        setIsSubmitting(true)
+
         try {
             const response = await axios.post(`
                 ${import.meta.env.VITE_BACKEND_API_URL}/freelancer/register`, formDataToSend, {
@@ -62,10 +65,36 @@ function FreelancerSignupForm() {
 
             console.log(response.data);
             navigate("/login")
-        } catch (error) {
-            console.error('Failed to register:', error);
-            // Handle error response (e.g., show error message)
+        } catch (err) {
+            setIsSubmitting(false);
+            // Handle more detailed error messages from backend response
+            if (err.response) {
+                const { status, data } = err.response;
+                switch (status) {
+                    case 400:
+                        // For validation errors
+                        if (data.errors && data.errors.length > 0) {
+                            const errorMessages = data.errors.map(error => error.msg).join(', ');
+                            setErrorMessage(errorMessages || "Invalid request. Please check your input.");
+                        } else {
+                            setErrorMessage(data.message || "Invalid request. Please check your input.");
+                        }
+                        break;
+                    case 404:
+                        setErrorMessage("Freelancer with this email already registered. Please log in.");
+                        break;
+                    case 500:
+                        setErrorMessage("Internal server error. Please try again later.");
+                        break;
+                    default:
+                        setErrorMessage("Signup failed. Please try again later.");
+                }
+            } else {
+                setErrorMessage('Network error. Please check your internet connection and try again.');
+            }
+            console.error('Error registering freelancer:', err);
         }
+
     };
 
     return (
@@ -77,6 +106,20 @@ function FreelancerSignupForm() {
         >
             <div className="max-w-lg w-full bg-white p-8 rounded-lg shadow-lg">
                 <h2 className="text-4xl font-bold mb-8 text-center">Freelancer Signup</h2>
+
+                {errorMessage && (
+                    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4 text-center" role="alert">
+                        <span className="inline-block align-middle mr-2">
+                            <svg className="w-5 h-5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01m-6.93-2a9 9 0 1113.86 0H5.07z" />
+                            </svg>
+                        </span>
+                        <strong className="font-bold">Error: </strong>
+                        <span className="block sm:inline">{errorMessage}</span>
+                    </div>
+                )}
+
+
                 <form onSubmit={handleSubmit}>
                     {/* Existing input fields */}
                     <div className="mb-4">
@@ -290,8 +333,9 @@ function FreelancerSignupForm() {
 
                     <div className="flex justify-center my-4 ">
                         <MyButton
-                            className='hover:text-orange'
-                            children='Signup'
+                            isSubmitting={isSubmitting}
+                            className="w-full py-3 text-2xl rounded-full text-white hover:text-orange"
+                            children='Sign up'
                             type="submit" />
                     </div>
                 </form>

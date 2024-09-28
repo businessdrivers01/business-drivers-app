@@ -11,7 +11,8 @@ import FreelancerLoginForm from "./FreelancerLoginForm/FreelancerLoginForm";
 import FreelancerSignupForm from "./FreelancerSignupForm/FreelancerSignupForm";
 import CompanyLoginForm from "./CompanyLoginForm/CompanyLoginForm";
 import CompanySignupForm from "./CompanySignupForm/CompanySignupForm";
-import ProtectedRoute from "./ProtectedRoute/ProtectedRoute.jsx";
+import CompanyProtectedRoute from "./CompanyProtectedRoute/CompanyProtectedRoute.jsx";
+import FreelancerProtectedRoute from "./FreelancerProtectedRoute/FreelancerProtectedRoute.jsx";
 import FreelancerProfile from "../Components/FreelancerProfile/FreelancerProfile.jsx";
 import CompanyProfile from "./CompanyProfile/CompanyProfile.jsx";
 import PostJob from "./PostJob/PostJob.jsx";
@@ -41,7 +42,8 @@ export {
     FreelancerSignupForm,
     CompanyLoginForm,
     CompanySignupForm,
-    ProtectedRoute,
+    FreelancerProtectedRoute,
+    CompanyProtectedRoute,
     FreelancerProfile,
     CompanyProfile,
     PostJob,

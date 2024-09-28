@@ -56,7 +56,7 @@ function OurMission() {
                         </h2>
                         <div className="space-y-4 text-lightBlue text-lg md:text-xl">
                             <p>
-                                At FreelanceHub, our mission is to empower businesses and freelancers by creating a dynamic, transparent, and efficient marketplace for talent and opportunity.
+                                At BusinessDrivers01, our mission is to empower businesses and freelancers by creating a dynamic, transparent, and efficient marketplace for talent and opportunity.
                             </p>
                             <p>
                                 We strive to break down geographical barriers, enabling seamless collaboration between skilled professionals and innovative companies worldwide.

@@ -9,7 +9,7 @@ function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
 
     const navbarItems = [
-        { id: 1, title: "Find Work", route: "/signup" },
+        { id: 1, title: "Find Work", route: "/signup-freelancer" },
         { id: 2, title: "Find Talent", route: "/signup" },
         { id: 3, title: "Free Courses", route: "/free-courses" },
         { id: 4, title: "Blogs", route: "/blogs" },
@@ -21,7 +21,7 @@ function Navbar() {
     return (
         <nav className='flex justify-between bg-darkBlue text-white py-6 px-4 items-center md:py-2 md:px-8'>
             {/* Logo */}
-            <div className="logo w-[18vw] md:w-[10vw] scale-150">
+            <div className="logo w-[18vw] md:w-[8vw] scale-150">
                 <NavLink to="/">
                     <img className='w-full' src={mainLogo} alt="Main Logo" />
                 </NavLink>
@@ -30,11 +30,13 @@ function Navbar() {
             {/* Desktop Menu */}
             <ul className='hidden md:flex justify-evenly flex-1 mx-8'>
                 {navbarItems.map((navItem) => (
-                    <li className='mx-4 text-xl' key={navItem.id}>
-                        <NavLink to={navItem.route}>
-                            {navItem.title}
-                        </NavLink>
-                    </li>
+                    <NavLink
+                        key={navItem.id}
+                        className={({ isActive }) => `${isActive ? "text-orange bg-lightBlue" : ""} font-bold p-2 text-xl 
+                        mx-4 rounded-lg hover:text-orange hover:bg-lightBlue duration-300`}
+                        to={navItem.route}>
+                        {navItem.title}
+                    </NavLink>
                 ))}
             </ul>
 

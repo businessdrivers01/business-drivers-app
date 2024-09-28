@@ -8,12 +8,12 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 
-  
+
 function FreelancerLoginForm() {
- 
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [errorMessage, setErrorMessage] = useState(null);
     const navigate = useNavigate();
 
-    const [errorMessage, setErrorMessage] = useState(null);
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -32,12 +32,12 @@ function FreelancerLoginForm() {
         e.preventDefault();
 
         // Check if both email and password fields are filled
-        console.log('Form Data:', formData.email, formData.password); // Debug log
+        // console.log('Form Data:', formData.email, formData.password); // Debug log
         if (!formData.email || !formData.password) {
             setErrorMessage('Please Enter Both, Email and Password.');
             return;
         }
-
+        setIsSubmitting(true)
         try {
             const response = await axios.post(
                 `${import.meta.env.VITE_BACKEND_API_URL}/freelancer/login`,
@@ -49,30 +49,47 @@ function FreelancerLoginForm() {
                     withCredentials: true, // Ensure cookies are handled properly
                 }
             );
-            console.log(response);
+            // console.log(response);
 
 
             if (response.status === 200 && response.data.success) {
                 console.log("Login successful!", response.data);
-            
+
                 // Save user data to localStorage and cookies
                 localStorage.setItem('user', JSON.stringify(response.data));
                 Cookies.set('user', JSON.stringify(response.data), { expires: 7 });
-            
-           
-            
+
+
+                setIsSubmitting(false)
                 // Redirect to dashboard
                 navigate("/freelancer-dashboard");
             }
-            
+
 
         } catch (err) {
-            console.log(err.message);
-            console.error('Login failed:', err?.message || 'Something went wrong.');
-            setErrorMessage(err?.message || 'Failed to log in. Please try again.');
+            setIsSubmitting(false);
+            // Handle more detailed error messages from backend response
+            if (err.response) {
+                const { status, data } = err.response;
+                switch (status) {
+                    case 400:
+                        // Handle validation errors for email and password
+                        setErrorMessage(data.message || "Invalid credentials. Please check your email and password.");
+                        break;
+                    case 404:
+                        setErrorMessage(data.message || "Freelancer with this email does not exist. Please sign up first.");
+                        break;
+                    default:
+                        setErrorMessage("Login failed. Please try again later.");
+                }
+            } else {
+                setErrorMessage('Network error. Please check your internet connection and try again.');
+            }
+            console.error('Error logging in freelancer:', err);
         }
+
     };
-  
+
 
     return (
         <div className="flex items-center justify-center min-h-screen">
@@ -81,7 +98,15 @@ function FreelancerLoginForm() {
                 <p className="text-center text-gray-600 mb-8">
                     Find top talent or get your work done seamlessly.
                 </p>
-                {errorMessage && <p className="text-red-500 text-center mb-4">{errorMessage}</p>}
+
+                {errorMessage && (
+                    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4 text-center" role="alert">
+                        <strong className="font-bold">Error: </strong>
+                        <span className="block sm:inline"> {errorMessage}</span>
+                    </div>
+                )}
+
+
                 <form onSubmit={onSubmitHandler}>
                     {loginFields.map((field) => (
                         <InputField
@@ -107,8 +132,8 @@ function FreelancerLoginForm() {
                     </div>
                     <div className="login-btn-container flex justify-center">
                         <MyButton
+                            isSubmitting={isSubmitting}
                             type="submit"
-                            textColor=""
                             className="w-full py-3 text-2xl rounded-full text-white hover:text-orange"
                         >
                             Login

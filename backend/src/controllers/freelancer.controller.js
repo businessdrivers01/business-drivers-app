@@ -33,7 +33,7 @@ const registerFreelancer = async (req, res) => {
     // Validate inputs
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json(new apiResponse(400, null, 'Validation failed', errors.array()));
+        return res.status(400).json(new apiError(400, 'Please enter valid credentials', errors.array()));
     }
 
     // Extract fields from request
@@ -102,13 +102,13 @@ const loginFreelancer = async (req, res) => {
 
     const freelancer = await Freelancer.findOne({ email })
     if (!freelancer) {
-        return res.status(404).json(new apiError(404, "Freelancer With This Email Does Not Exist. Please Signup First."))
+        return res.status(404).json(new apiError(404, "Freelancer With This Email Does Not Exist. Please Sign up First."))
     }
 
     const isPasswordCorrect = await freelancer.comparePassword(password);
 
     if (!isPasswordCorrect) {
-        return res.status(400).json(new apiError(400, "Please Enter Valid Password."))
+        return res.status(400).json(new apiError(400, "Please enter valid password."))
     }
 
 
@@ -138,7 +138,7 @@ const loginFreelancer = async (req, res) => {
 
 
 const getFreelancerProfile = async (req, res) => {
-    const { id } = req.body;s
+    const { id } = req.body; s
 
     try {
         const freelancer = await Freelancer.findById(id).select("-password -refreshToken");

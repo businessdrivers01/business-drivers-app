@@ -79,6 +79,8 @@ const companyFields = [
 ];
 
 function CompanySignupForm() {
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [errorMessage, setErrorMessage] = useState(null);
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
@@ -123,6 +125,7 @@ function CompanySignupForm() {
                 formDataToSend.append(key, files[key]);
             }
         }
+        setIsSubmitting(true)
 
         try {
             const response = await axios.post(
@@ -132,12 +135,38 @@ function CompanySignupForm() {
                 },
             });
             console.log('Company registered successfully:', response.data);
-            // Handle success (e.g., redirect, show message, etc.)
+            // Handling success (e.g., redirect, show message, etc.)
             navigate("/login")
-        } catch (error) {
-            console.error('Error registering company:', error.response?.data || error.message);
-            // Handle error (e.g., show error message)
+        } catch (err) {
+            setIsSubmitting(false);
+            // error messages from backend 
+            if (err.response) {
+                const { status, data } = err.response;
+                switch (status) {
+                    case 400:
+                        // For validation errors
+                        if (data.errors && data.errors.length > 0) {
+                            const errorMessages = data.errors.map(error => error.msg).join(', ');
+                            setErrorMessage(errorMessages || "Invalid request. Please check your input.");
+                        } else {
+                            setErrorMessage(data.message || "Invalid request. Please check your input.");
+                        }
+                        break;
+                    case 404:
+                        setErrorMessage("Company with this email already registered. Please log in.");
+                        break;
+                    case 500:
+                        setErrorMessage("Internal server error. Please try again later.");
+                        break;
+                    default:
+                        setErrorMessage("Signup failed. Please try again later.");
+                }
+            } else {
+                setErrorMessage('Network error. Please check your internet connection and try again.');
+            }
+            console.error('Error registering company:', err);
         }
+
     };
 
     return (
@@ -148,6 +177,21 @@ function CompanySignupForm() {
             className="max-w-lg w-full bg-white p-8 rounded-lg"
         >
             <h2 className="text-4xl font-bold mb-8 text-orange text-center">Company Signup</h2>
+
+            {errorMessage && (
+                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4 text-center" role="alert">
+                    <span className="inline-block align-middle mr-2">
+                        <svg className="w-5 h-5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01m-6.93-2a9 9 0 1113.86 0H5.07z" />
+                        </svg>
+                    </span>
+                    <strong className="font-bold">Error: </strong>
+                    <span className="block sm:inline">{errorMessage}</span>
+                </div>
+            )}
+
+
+
             <form onSubmit={onSubmitHandler}>
                 {companyFields.map((field) => (
                     <InputField
@@ -191,11 +235,13 @@ function CompanySignupForm() {
                 </div>
                 <div className="login-btn-container flex justify-center">
                     <MyButton
+                        isSubmitting={isSubmitting}
+                        children='Sign up'
                         type="submit"
                         className="w-full py-3 text-lg rounded-full text-white hover:text-orange"
-                    >
-                        Sign Up
-                    </MyButton>
+                    />
+
+
                 </div>
             </form>
         </motion.div>

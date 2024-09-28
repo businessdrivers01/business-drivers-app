@@ -87,7 +87,7 @@ const loginCompany = async (req, res) => {
 
     const company = await Company.findOne({ email });
     if (!company) {
-        return res.status(404).json(new apiError(404, "Company with this email does not exist. Please register."));
+        return res.status(404).json(new apiError(404, "Company with this email does not exist. Please Sign up first."));
     }
 
     const isPasswordCorrect = await company.comparePassword(password);
