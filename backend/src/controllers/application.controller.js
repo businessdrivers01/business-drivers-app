@@ -68,8 +68,8 @@ const applyForJob = async (req, res) => {
 };
 
 
-export const getFreelancerApplications = async (req, res) => {
-    const { freelancerId } = req.body; 
+const getFreelancerApplications = async (req, res) => {
+    const { freelancerId } = req.body;
 
     try {
         const applications = await Application.find({ applicant: freelancerId }).populate('job');
@@ -91,4 +91,4 @@ export const getFreelancerApplications = async (req, res) => {
 
 
 
-export { applyForJob, getJobApplications, updateApplicationStatus }
+export { applyForJob, getJobApplications, updateApplicationStatus, getFreelancerApplications }

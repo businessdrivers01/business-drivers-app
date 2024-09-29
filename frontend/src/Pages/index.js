@@ -16,6 +16,11 @@ import FreeCoursesPage from "./FreeCoursesPage/FreeCoursesPage.jsx";
 import FreelancerEarningPage from "./FreelancerEarningPage/FreelancerEarningPage.jsx";
 import PrivacyPolicyPage from "./PrivacyPolicyPage/PrivacyPolicyPage.jsx";
 import TermsOfServicesPage from "./TermsOfServicesPage/TermsOfServicesPage.jsx";
+import AdminSignupPage from "./AdminSignupPage/AdminSignupPage.jsx";
+import AdminLoginPage from "./AdminLoginPage/AdminLoginPage.jsx";
+import AdminDashboard from "./AdminDashboard/AdminDashboard.jsx";
+import AdminDashboardDefault from "./AdminDashboardDefault/AdminDashboardDefault.jsx";
+import ManageUsersPage from "./ManageUsersPage/ManageUsersPage.jsx";
 
 
 export {
@@ -23,9 +28,9 @@ export {
     SignupPage,
     FreelancerDashboard,
     FreelancerDashboardDefault,
-    FreelancerProfilePage, 
+    FreelancerProfilePage,
     JobsPage,
-    NotFound, 
+    NotFound,
     ErrorBoundary,
     CompanyDashboard,
     CompanyDashboardDefault,
@@ -37,4 +42,9 @@ export {
     FreelancerEarningPage,
     PrivacyPolicyPage,
     TermsOfServicesPage,
+    AdminSignupPage,
+    AdminLoginPage,
+    AdminDashboard,
+    AdminDashboardDefault,
+    ManageUsersPage
 }

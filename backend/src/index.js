@@ -7,6 +7,7 @@ import freelancerRouter from './routes/freelancerRouter.js';
 import companyRouter from './routes/companyRouter.js';
 import jobsRouter from './routes/jobsRouter.js';
 import applicationRouter from './routes/applicationRouter.js';
+import adminRouter from './routes/adminRouter.js';
 configDotenv();
 
 const app = express();
@@ -18,7 +19,7 @@ app.use(cors({
     credentials: true,
 }));
 
-const DBFunc = async () => console.log("To Avoid Over Limit Of Atlas")
+// const DBFunc = async () => console.log("To Avoid Over Limit Of Atlas")
 // DBFunc()
 connectDB().then(() => {
     app.listen(process.env.PORT, '192.168.1.108', () => {
@@ -48,6 +49,7 @@ app.use("/api/v1/freelancer", freelancerRouter)
 app.use("/api/v1/company", companyRouter)
 app.use("/api/v1/jobs", jobsRouter)
 app.use("/api/v1/application", applicationRouter)
+app.use("/api/v1/admin", adminRouter)
 
 
 

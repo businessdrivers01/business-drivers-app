@@ -9,10 +9,11 @@ const companySchema = new mongoose.Schema({
   companyNtn: { type: String, required: true }, // National Tax Number
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  proofOfRegistrationFee: { type: String, required: true }, 
+  proofOfRegistrationFee: { type: String, required: true },
   avatar: { type: String }, // Cloudinary URL for profile picture
   bio: { type: String }, // Bio of the Company
-  refreshToken: { type: String,}
+  refreshToken: { type: String },
+  isActive: { type: Boolean, default: false }
   // URL or file path for proof of registration
 }, { timestamps: true });
 
@@ -41,7 +42,7 @@ companySchema.methods.generateRefreshToken = function () {
 companySchema.pre('save', async function (next) {
   // Hash the password only if it’s new or modified
   if (!this.isModified('password')) return next();
-  
+
   // Generate salt and hash the password
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);

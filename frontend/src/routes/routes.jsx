@@ -1,6 +1,6 @@
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from "react-router-dom"
-import { Layout, Home, ContactUs } from '../Components'
-import { LoginPage, SignupPage, FreelancerDashboard, JobsPage, FreelancerDashboardDefault, NotFound, ErrorBoundary, CompanyDashboard, FreelancerProfilePage, CompanyProfilePage, CompanyDashboardDefault, PostJobPage, JobsPosted, BlogPage, FreeCoursesPage, PrivacyPolicyPage, TermsOfServicesPage } from '../Pages'
+import { Layout, Home, ContactUs, AdminProtectedRoute } from '../Components'
+import { LoginPage, SignupPage, FreelancerDashboard, JobsPage, FreelancerDashboardDefault, NotFound, ErrorBoundary, CompanyDashboard, FreelancerProfilePage, CompanyProfilePage, CompanyDashboardDefault, PostJobPage, JobsPosted, BlogPage, FreeCoursesPage, PrivacyPolicyPage, TermsOfServicesPage, AdminSignupPage, AdminLoginPage, AdminDashboard, AdminDashboardDefault, ManageUsersPage } from '../Pages'
 import { CompanyProtectedRoute, FreelancerProtectedRoute } from '../Components'
 
 
@@ -19,9 +19,11 @@ export const router = createBrowserRouter(
             } errorElement={<ErrorBoundary />}>
                 <Route index element={<Home />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/login-admin" element={<AdminLoginPage />} />
                 <Route path="/signup" element={<SignupPage />} />
                 {/* just to Add NavLink isActive state separately on Find Work and Find Job NavItems */}
                 <Route path="/signup-freelancer" element={<SignupPage />} />
+                <Route path="/signup-admin" element={<AdminSignupPage />} />
 
                 <Route path="/blogs" element={<BlogPage />} />
                 <Route path="/free-courses" element={<FreeCoursesPage />} />
@@ -59,6 +61,22 @@ export const router = createBrowserRouter(
                 <Route path="/company-dashboard/jobs-posted" element={<JobsPosted />} />
 
             </Route>
+
+
+            {/* Protected Routes for Admin */}
+            <Route path="/admin-dashboard" element={
+                <ErrorBoundary>
+                    <AdminProtectedRoute>
+                        <AdminDashboard />
+                    </AdminProtectedRoute>
+                </ErrorBoundary>
+            } errorElement={<ErrorBoundary />}>
+                <Route index element={<AdminDashboardDefault />} />
+                <Route path="/admin-dashboard/manage-users" element={<ManageUsersPage />} />
+                {/*  <Route path="/admin-dashboard/settings" element={<AdminSettingsPage />} />
+                <Route path="/admin-dashboard/analytics" element={<AdminAnalyticsPage />} /> */}
+            </Route>
+
 
 
 

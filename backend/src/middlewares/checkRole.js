@@ -6,7 +6,7 @@ export const checkRole = (role) => {
         if (req.user && req.user.role === role) {
             next();
         } else {
-            res.status(403).json(new apiError(403, "Acess Denied."))
+            res.status(403).json(new apiError(403, "Access Denied."))
         }
     };
 };

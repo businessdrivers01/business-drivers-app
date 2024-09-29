@@ -8,7 +8,8 @@ import OurHistory from "./Home/HomeMisc/OurHistory";
 import OurMission from "./Home/HomeMisc/OurMission";
 import Benefits from "./Home/HomeMisc/Benefits";
 import FreelancerLoginForm from "./FreelancerLoginForm/FreelancerLoginForm";
-import FreelancerSignupForm from "./FreelancerSignupForm/FreelancerSignupForm";
+// import FreelancerSignupForm from "./FreelancerSignupForm/OldFreelancerSignupForm.jsx";
+import FreelancerSignupForm from "./FreelancerSignupForm/FreelancerSignupForm.jsx";
 import CompanyLoginForm from "./CompanyLoginForm/CompanyLoginForm";
 import CompanySignupForm from "./CompanySignupForm/CompanySignupForm";
 import CompanyProtectedRoute from "./CompanyProtectedRoute/CompanyProtectedRoute.jsx";
@@ -25,6 +26,10 @@ import FreeCourse from "./FreeCourse/FreeCourse.jsx";
 import FreelancerEarning from "./FreelancerEarning/FreelancerEarning.jsx";
 import PrivacyPolicy from "./PrivacyPolicy/PrivacyPolicy.jsx";
 import TermsOfServices from "./TermsOfServices/TermsOfServices.jsx";
+import AdminSignupForm from "./AdminSignupForm/AdminSignupForm.jsx";
+import AdminLoginForm from "./AdminLoginForm/AdminLoginForm.jsx";
+import AdminProtectedRoute from "./AdminProtectedRoute/AdminProtectedRoute.jsx";
+import ManageUsers from "./ManageUsers/ManageUsers.jsx";
 
 
 
@@ -56,5 +61,10 @@ export {
     FreelancerEarning,
     PrivacyPolicy,
     TermsOfServices,
+    AdminSignupForm,
+    AdminLoginForm,
+    AdminProtectedRoute,
+    ManageUsers
+
 }
 

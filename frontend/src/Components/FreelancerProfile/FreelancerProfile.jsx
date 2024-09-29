@@ -5,8 +5,8 @@ export default function FreelancerProfile({
   fullName = "John Doe",
   email = "john@example.com",
   number = "+1 234 567 8900",
-  cnic = "1234-5678901-2",
-  skill = "Web Development",
+  CNIC = "1234-5678901-2",
+  skills = "",
   bankAccount = "**** **** **** 1234",
   companyName = "N/A",
   avatar = "/placeholder.svg?height=128&width=128",
@@ -28,14 +28,14 @@ export default function FreelancerProfile({
         />
         <div className="flex-1 text-center md:text-left">
           <h1 className="text-3xl font-bold text-darkBlue">{fullName}</h1>
-          <p className="text-lightBlue mt-2">{skill}</p>
+          <p className="text-lightBlue mt-2">{[skills]}</p>
           <p className="text-gray-600 mt-2">{bio}</p>
         </div>
       </div>
       <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
         <InfoItem icon={<Mail className="text-orange" />} label="Email" value={email} />
         <InfoItem icon={<Phone className="text-orange" />} label="Phone" value={number} />
-        <InfoItem icon={<User className="text-orange" />} label="CNIC" value={cnic} />
+        <InfoItem icon={<User className="text-orange" />} label="CNIC" value={CNIC} />
         <InfoItem icon={<CreditCard className="text-orange" />} label="Bank Account" value={bankAccount} />
         <InfoItem icon={<Briefcase className="text-orange" />} label="Company" value={companyName} />
       </div>

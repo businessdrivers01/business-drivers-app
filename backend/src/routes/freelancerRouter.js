@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { apiResponse } from "../utils/apiResponse.js";
-import { getFreelancerProfile, loginFreelancer, logoutFreelancer, registerFreelancer } from "../controllers/freelancer.controller.js";
+import { activeFreelancers, getFreelancerProfile, inactiveFreelancers, loginFreelancer, logoutFreelancer, registerFreelancer, toggleFreelancerStatus } from "../controllers/freelancer.controller.js";
 import {upload} from "../utils/multer.js"
 
 const freelancerRouter = Router()
@@ -23,10 +23,12 @@ freelancerRouter.post("/register", upload.fields([
         maxCount: 1
     }
 ]), registerFreelancer)
-
 freelancerRouter.post("/login", loginFreelancer)
 freelancerRouter.post("/logout", logoutFreelancer)
 freelancerRouter.post("/profile", getFreelancerProfile)
+freelancerRouter.get("/inactive", inactiveFreelancers)
+freelancerRouter.get("/active", activeFreelancers)
+freelancerRouter.patch("/:id/toggle-status", toggleFreelancerStatus)
 
 
 

@@ -7,7 +7,8 @@ const freelancerSchema = new mongoose.Schema({
   fullName: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  skills: { type: [String], required: true },
+  number: { type: Number, required: true },
+  skills: { type: String, required: true },
   CNIC: { type: String, required: true },
   bankAccount: { type: String, required: true },
   currentlyEmployed: { type: Boolean, default: false },
@@ -19,7 +20,8 @@ const freelancerSchema = new mongoose.Schema({
   applications: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Application' // New field referencing the Application model
-  }]
+  }],
+  isActive: { type: Boolean, default: false }
 }, { timestamps: true });
 
 // Add custom methods
