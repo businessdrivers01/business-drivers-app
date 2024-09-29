@@ -83,7 +83,7 @@ const ManageUsers = () => {
       transition={{ duration: 0.5 }}
       className="container mx-auto p-6 bg-gray-100 min-h-screen"
     >
-      <h1 className="text-4xl font-bold mb-8 text-center text-gray-800">Manage Users</h1>
+      <h1 className="text-4xl font-bold mb-8 text-center text-orange">Manage Users</h1>
 
       <div className="w-full mb-8">
         <div className="flex rounded-md bg-white shadow-sm">
@@ -136,9 +136,9 @@ const ManageUsers = () => {
           </section>
         </div>
       ) : (
-        <div className="space-y-6">
+        <div className="space-y-16">
           <section>
-            <h2 className="text-2xl font-semibold mb-4 text-gray-700">Active Freelancers</h2>
+            <h2 className="text-3xl font-bold mb-4 text-darkBlue">Active Freelancers</h2>
             {activeFreelancers.map((freelancer) => (
               <UserCard
                 key={freelancer._id}
@@ -148,8 +148,8 @@ const ManageUsers = () => {
               />
             ))}
           </section>
-          <section>
-            <h2 className="text-2xl font-semibold mb-4 text-gray-700">Active Companies</h2>
+          <section className=''>
+            <h2 className="text-3xl font-bold mb-4 text-darkBlue">Active Companies</h2>
             {activeCompanies.map((company) => (
               <UserCard
                 key={company._id}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Mail, User, Building, FileText, Briefcase, Shield } from 'lucide-react'
+import { Mail, User, Building, FileText, Shield, TicketCheck } from 'lucide-react'
 
 export default function CompanyProfile({
   companyName = "Acme Corporation",
@@ -8,7 +8,8 @@ export default function CompanyProfile({
   companyNtn = "NTN-7890123",
   email = "contact@acme.com",
   bio = "Leading innovation in technology solutions for over a decade.",
-  avatar = "/placeholder.svg?height=128&width=128"
+  avatar = "/placeholder.svg?height=128&width=128",
+  isActive,
 }) {
   return (
     <div className="bg-gray-200 px-6 py-12 rounded-2xl shadow-lg max-w-2xl mx-auto">
@@ -31,11 +32,12 @@ export default function CompanyProfile({
         </div>
       </div>
       <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <InfoItem icon={<Building className="text-orange" />} label="Company Name" value={companyName} />
         <InfoItem icon={<Mail className="text-orange" />} label="Email" value={email} />
         <InfoItem icon={<User className="text-orange" />} label="POC Name" value={pocName} />
         <InfoItem icon={<Shield className="text-orange" />} label="POC ID" value={pocId} />
         <InfoItem icon={<FileText className="text-orange" />} label="Company NTN" value={companyNtn} />
-        <InfoItem icon={<Building className="text-orange" />} label="Company Name" value={companyName} />
+        <InfoItem icon={<TicketCheck className="text-orange" />} label="Account Status" value={isActive ? "Approved" : "Pending"} />
       </div>
     </div>
   )

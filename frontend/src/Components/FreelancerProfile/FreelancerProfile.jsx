@@ -1,5 +1,5 @@
 import React from 'react'
-import { Phone, Mail, CreditCard, Briefcase, User } from 'lucide-react'
+import { Phone, Mail, CreditCard, Briefcase, User, TicketCheck } from 'lucide-react'
 
 export default function FreelancerProfile({
   fullName = "John Doe",
@@ -10,7 +10,8 @@ export default function FreelancerProfile({
   bankAccount = "**** **** **** 1234",
   companyName = "N/A",
   avatar = "/placeholder.svg?height=128&width=128",
-  bio = "Passionate freelancer with 5+ years of experience in web development."
+  bio = "Passionate freelancer with 5+ years of experience in web development.",
+  isActive,
 }) {
   return (
     <div className="bg-gray-200 px-6 py-12 rounded-2xl shadow-lg max-w-2xl mx-auto">
@@ -28,7 +29,7 @@ export default function FreelancerProfile({
         />
         <div className="flex-1 text-center md:text-left">
           <h1 className="text-3xl font-bold text-darkBlue">{fullName}</h1>
-          <p className="text-lightBlue mt-2">{[skills]}</p>
+          <p className="text-lightBlue mt-2">{skills}</p>
           <p className="text-gray-600 mt-2">{bio}</p>
         </div>
       </div>
@@ -38,6 +39,8 @@ export default function FreelancerProfile({
         <InfoItem icon={<User className="text-orange" />} label="CNIC" value={CNIC} />
         <InfoItem icon={<CreditCard className="text-orange" />} label="Bank Account" value={bankAccount} />
         <InfoItem icon={<Briefcase className="text-orange" />} label="Company" value={companyName} />
+
+        <InfoItem icon={<TicketCheck className="text-orange" />} label="Account Status" value={isActive ? "Approved" : "Pending"} />
       </div>
     </div>
   )

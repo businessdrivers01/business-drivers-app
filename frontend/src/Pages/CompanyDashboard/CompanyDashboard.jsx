@@ -6,6 +6,7 @@ import { RiMessage2Line } from 'react-icons/ri'
 import { getCurrentCompany } from '../../utils/getCurrentCompany'
 import { useLogout } from '../../utils/logoutCompany.js'
 import mainLogo from "../../assets/Logos/main-logo.webp";
+import { PendingApproval } from '../../Components/index.js'
 
 const Header = () => {
   const { handleLogout } = useLogout();
@@ -27,7 +28,7 @@ const Header = () => {
 
   return (
     <motion.header
-    className="bg-lightBlue text-white px-8 py-2">
+      className="bg-lightBlue text-white px-8 py-2">
       <div className="flex flex-row justify-between items-center">
         <div className="logo w-[18vw] md:w-[8vw]">
           <img className='w-full scale-150' src={mainLogo} alt="Main Logo" />
@@ -132,35 +133,46 @@ const Sidebar = () => {
 }
 
 const CompanyDashboard = () => {
+
+  const company = getCurrentCompany()
   return (
-    <div className="min-h-screen bg-white">
-      <Header />
-      <div className="flex flex-col sm:flex-row">
-        <AnimatePresence>
-          <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-            className="sm:w-64"
-          >
-            <Sidebar />
-          </motion.div>
-        </AnimatePresence>
-        <main className="flex-1 p-4 sm:p-8">
-          <AnimatePresence mode="wait">
+
+    company?.isActive ? <>
+      <div className="min-h-screen bg-white">
+        <Header />
+        <div className="flex flex-col sm:flex-row">
+          <AnimatePresence>
             <motion.div
-              key={window.location.pathname}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="sm:w-64"
             >
-              <Outlet />
+              <Sidebar />
             </motion.div>
           </AnimatePresence>
-        </main>
+          <main className="flex-1 p-4 sm:p-8">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={window.location.pathname}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Outlet />
+              </motion.div>
+            </AnimatePresence>
+          </main>
+        </div>
       </div>
+    </> : <div>
+      <PendingApproval />
     </div>
+
+
+
+
   )
 }
 

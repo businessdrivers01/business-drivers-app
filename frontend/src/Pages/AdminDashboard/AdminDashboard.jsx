@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FaUsers, FaUserCog, FaSignOutAlt, FaChevronDown, FaChartLine, FaUserShield } from 'react-icons/fa'
-import { RiMessage2Line } from 'react-icons/ri'
+import { FaUsers, FaUserCog, FaSignOutAlt, FaChevronDown, FaChartLine } from 'react-icons/fa'
 import { getCurrentAdmin } from '../../utils/getCurrentAdmin'
 import { useLogout } from '../../utils/logoutAdmin.js'
 import mainLogo from "../../assets/Logos/main-logo.webp";
@@ -32,10 +31,6 @@ const Header = () => {
           <img className='w-full scale-150' src={mainLogo} alt="Main Logo" />
         </div>
         <nav className="flex items-center space-x-4">
-          <button className="flex items-center space-x-2 text-white">
-            <RiMessage2Line className="w-5 h-5" />
-            <span className="hidden sm:inline">Messages</span>
-          </button>
           <div className="relative" ref={dropdownRef}>
             <button
               className="flex items-center text-white"
@@ -108,7 +103,6 @@ const Sidebar = () => {
     <nav className="flex flex-row flex-wrap sm:flex-col space-x-2 sm:space-x-0 sm:space-y-2 p-4 sm:p-8 overflow-x-auto sm:overflow-x-visible">
       <SidebarItem to="/admin-dashboard" icon={FaChartLine} exact={true}>Dashboard</SidebarItem>
       <SidebarItem to="/admin-dashboard/manage-users" icon={FaUsers}>Manage Users</SidebarItem>
-      <SidebarItem to="/admin-dashboard/analytics" icon={FaUserShield}>Analytics</SidebarItem>
       {!isMobile && (
         <>
           <SidebarItem to="/admin-dashboard/profile" icon={FaUserCog}>Admin Profile</SidebarItem>

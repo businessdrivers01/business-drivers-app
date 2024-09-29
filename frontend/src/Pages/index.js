@@ -21,6 +21,7 @@ import AdminLoginPage from "./AdminLoginPage/AdminLoginPage.jsx";
 import AdminDashboard from "./AdminDashboard/AdminDashboard.jsx";
 import AdminDashboardDefault from "./AdminDashboardDefault/AdminDashboardDefault.jsx";
 import ManageUsersPage from "./ManageUsersPage/ManageUsersPage.jsx";
+import AdminProfilePage from "./AdminProfilePage/AdminProfilePage.jsx";
 
 
 export {
@@ -46,5 +47,6 @@ export {
     AdminLoginPage,
     AdminDashboard,
     AdminDashboardDefault,
-    ManageUsersPage
+    ManageUsersPage,
+    AdminProfilePage
 }

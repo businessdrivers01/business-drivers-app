@@ -8,7 +8,6 @@ import OurHistory from "./Home/HomeMisc/OurHistory";
 import OurMission from "./Home/HomeMisc/OurMission";
 import Benefits from "./Home/HomeMisc/Benefits";
 import FreelancerLoginForm from "./FreelancerLoginForm/FreelancerLoginForm";
-// import FreelancerSignupForm from "./FreelancerSignupForm/OldFreelancerSignupForm.jsx";
 import FreelancerSignupForm from "./FreelancerSignupForm/FreelancerSignupForm.jsx";
 import CompanyLoginForm from "./CompanyLoginForm/CompanyLoginForm";
 import CompanySignupForm from "./CompanySignupForm/CompanySignupForm";
@@ -30,6 +29,8 @@ import AdminSignupForm from "./AdminSignupForm/AdminSignupForm.jsx";
 import AdminLoginForm from "./AdminLoginForm/AdminLoginForm.jsx";
 import AdminProtectedRoute from "./AdminProtectedRoute/AdminProtectedRoute.jsx";
 import ManageUsers from "./ManageUsers/ManageUsers.jsx";
+import AdminProfile from "./AdminProfile/AdminProfile.jsx";
+import PendingApproval from "./PendingApproval/PendingApproval.jsx";
 
 
 
@@ -64,7 +65,9 @@ export {
     AdminSignupForm,
     AdminLoginForm,
     AdminProtectedRoute,
-    ManageUsers
+    ManageUsers,
+    AdminProfile,
+    PendingApproval 
 
 }
 

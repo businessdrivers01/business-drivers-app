@@ -1,6 +1,6 @@
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from "react-router-dom"
 import { Layout, Home, ContactUs, AdminProtectedRoute } from '../Components'
-import { LoginPage, SignupPage, FreelancerDashboard, JobsPage, FreelancerDashboardDefault, NotFound, ErrorBoundary, CompanyDashboard, FreelancerProfilePage, CompanyProfilePage, CompanyDashboardDefault, PostJobPage, JobsPosted, BlogPage, FreeCoursesPage, PrivacyPolicyPage, TermsOfServicesPage, AdminSignupPage, AdminLoginPage, AdminDashboard, AdminDashboardDefault, ManageUsersPage } from '../Pages'
+import { LoginPage, SignupPage, FreelancerDashboard, JobsPage, FreelancerDashboardDefault, NotFound, ErrorBoundary, CompanyDashboard, FreelancerProfilePage, CompanyProfilePage, CompanyDashboardDefault, PostJobPage, JobsPosted, BlogPage, FreeCoursesPage, PrivacyPolicyPage, TermsOfServicesPage, AdminSignupPage, AdminLoginPage, AdminDashboard, AdminDashboardDefault, ManageUsersPage, AdminProfilePage } from '../Pages'
 import { CompanyProtectedRoute, FreelancerProtectedRoute } from '../Components'
 
 
@@ -73,8 +73,8 @@ export const router = createBrowserRouter(
             } errorElement={<ErrorBoundary />}>
                 <Route index element={<AdminDashboardDefault />} />
                 <Route path="/admin-dashboard/manage-users" element={<ManageUsersPage />} />
-                {/*  <Route path="/admin-dashboard/settings" element={<AdminSettingsPage />} />
-                <Route path="/admin-dashboard/analytics" element={<AdminAnalyticsPage />} /> */}
+                <Route path="/admin-dashboard/profile" element={<AdminProfilePage />} />
+                {/* <Route path="/admin-dashboard/analytics" element={<AdminAnalyticsPage />} /> */}
             </Route>
 
 
