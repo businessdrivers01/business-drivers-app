@@ -19,8 +19,6 @@ function OurHistory() {
         autoplay: true,
         autoplaySpeed: 3000,
         arrows: true,
-        
-        
     };
 
     const slides = [

@@ -7,10 +7,7 @@ export default defineConfig({
   server: {
     historyApiFallback: true,
   },
-  resolve: {
-    alias: {
-      '@': resolve(__dirname, 'src'),
-    },
-  },
+
+
 
 })

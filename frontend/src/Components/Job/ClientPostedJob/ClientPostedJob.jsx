@@ -17,6 +17,7 @@ const ClientPostedJob = ({ job }) => {
                     setLoading(true);
                     const fetchedApplications = await getJobApplications(job._id);
                     setApplications(fetchedApplications);
+                    // console.log(fetchedApplications)
                 } catch (error) {
                     console.error('Error fetching applications:', error);
                 } finally {
@@ -115,8 +116,8 @@ const ClientPostedJob = ({ job }) => {
                                             <div key={application._id} className="bg-gray-200 rounded-lg p-6 shadow-sm">
                                                 <div className="flex justify-between items-start mb-4">
                                                     <div>
-                                                        <h4 className="text-lg font-semibold text-darkBlue">{application.applicant.fullName}</h4>
-                                                        <p className="text-gray-600">{application.applicant.email}</p>
+                                                        <h4 className="text-lg font-semibold text-darkBlue">  {application.applicant?.fullName || "Applicant name not available"}</h4>
+                                                        <p className="text-gray-600"> {application.applicant?.email || "Email not available"}</p>
                                                     </div>
                                                     <span className={`px-3 py-1 rounded-full text-sm font-medium ${application.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
                                                             application.status === 'accepted' ? 'bg-green-100 text-green-800' :
@@ -138,7 +139,7 @@ const ClientPostedJob = ({ job }) => {
                                                 <div className="mb-4">
                                                     <h5 className="font-semibold text-darkBlue mb-2">Skills</h5>
                                                     <div className="flex flex-wrap gap-2">
-                                                        {application.applicant.skills?.map((skill, index) => (
+                                                        {application.applicant?.skills?.map((skill, index) => (
                                                             <span key={index} className="bg-lightBlue text-white px-2 py-1 rounded-full text-sm">
                                                                 {skill}
                                                             </span>

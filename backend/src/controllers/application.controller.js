@@ -10,8 +10,7 @@ const getJobApplications = async (req, res) => {
 
         // Fetch all applications for the job and populate freelancer details
         const applications = await Application.find({ job: jobId })
-            .populate('applicant', 'fullName email skills') // Populate freelancer's basic details
-            .populate('job', 'title'); // Populate job title
+            .populate('applicant', 'fullName email skills')
 
         res.status(200).json({ message: 'Applications fetched successfully', applications });
     } catch (error) {
